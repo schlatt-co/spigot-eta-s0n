@@ -12,10 +12,15 @@ setInterval( () => {
 
 function checkNextBuild(buildNum) {
     $.getJSON(proxyUrl + targetUrl, (data) => {
-        if (data.nextBuildNumber == buildNum) {
+        let bool = data.nextBuildNumber == buildNum;
+
+        console.log((new Date()).getTime() + ' - is bukkit 1.16 here yet: ' + (bool?false:true));
+
+        if (bool) {
             return;
         }
         $('#status').text('YEP :)');
+        console.log('BROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO IT\'S OUTsdfffffffffffffbdxkjhbfgsdkjbjkfshdbkjfbhdksjfbsdkjbsdkjhbsdkjfbsdkhbsdkbfsdkjkksfdkhbjdsf');
         
         $('#audio-jebait')[0].play();
         $jebait.append($('<button>').text('Pause Audio').click(()=>$('#audio-jebait')[0].pause()));
