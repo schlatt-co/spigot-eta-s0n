@@ -4,16 +4,20 @@ let proxyUrl = 'https://cors-anywhere0.herokuapp.com/',
     $jebait = $('#jebait');
 
 checkNextBuild(nextBuild);
-checkTime();
+setTime();
+checkAusTime();
+setInterval( () => {
+    checkAusTime();
+}, 1000);
 setInterval( () => {
     checkNextBuild(nextBuild);
-    checkTime();
 }, 5000);
 
 function checkNextBuild(buildNum) {
     $.getJSON(proxyUrl + targetUrl, (data) => {
         let bool = data.nextBuildNumber == buildNum;
 
+        setTime();
         console.log((new Date()).getTime() + ' - is bukkit 1.16 here yet: ' + (bool?false:true));
 
         if (bool) {
@@ -31,7 +35,12 @@ function checkNextBuild(buildNum) {
     });
 }
 
-function checkTime() {
+function checkAusTime() {
+    let time = new Date().toLocaleString('en-US', {timeZone: 'Australia/Sydney'})
+    $('#timeAus').text(time.replace(/^.+,/g, ' '));
+}
+
+function setTime() {
     let time = new Date().toLocaleString('en-US', {timeZone: 'Australia/Sydney'})
     $('#time').text(time.replace(/^.+,/g, ' '));
 }
