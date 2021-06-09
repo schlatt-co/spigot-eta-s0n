@@ -1,6 +1,6 @@
 let proxyUrl = 'https://cors-anywhere0.herokuapp.com/',
     targetUrl = 'https://hub.spigotmc.org/jenkins/view/RSS/job/Bukkit-RSS/api/json',
-    nextBuild = 723
+    nextBuild = 851
     $jebait = $('#jebait');
 
 checkNextBuild(nextBuild);
